@@ -1,0 +1,11 @@
+path: .
+train: ./train/images
+test: ./test/images
+val: ./valid/images
+
+#Classes
+nc: 3
+
+#classes names
+#replace all class names list with your classes names
+names: ['t', 'ct', 'bomb']
