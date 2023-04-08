@@ -27,6 +27,8 @@ Here is an example video of the current model (as of April 7, 2023)!
 
 Both training and usage require the installation of [Python 3](https://www.python.org/). Trust me, I *also* wish this were not the case. C++ compiled binaries one day I promise.
 
+This repo should always contain a `best.pt` model, which will always be updated to the best model I have trained so far. You can use this instead of training it yourself.
+
 ## For training
 
 1. (optional) use a `venv`:
