@@ -92,7 +92,7 @@ This project is built off the backbone of [YOLOv8](https://github.com/ultralytic
 
 To train the custom model, I gather data using a [CS2 ESP cheat](https://github.com/SpikeHD/cs2-data-dumper) that I modified (thank you to the original author of it!) to dump bounding box data directly to YOLO format. I then use my personal favorite labelling program, [OpenLabeling](https://github.com/Cartucho/OpenLabeling), to clean up the data (for example, getting rid of ESP boxes that are showing players through walls). A couple games of Deathmatch was enough to get it to it's current state.
 
-The YOLOv8 model is awesome. In fact, I'm sure you're curious about the training time on the above [example video](#progress), since it's *SUPER* impressive:
+The YOLOv8 model is awesome. In fact, I'm sure you're curious about the training time on the above [example video](#progress):
 
 ```
 +-------+
@@ -113,5 +113,5 @@ Approx. Time Taken to Train: 1h
 ```
 (I will try to remember to time the next training session properly)
 
-An hour to train?? Only 1.5k images?? I don't know what is considered "good" or "bad" in the machine learning world yet, but I'd say that's pretty impressive.
+An hour to train?? Only ~1.6k images?? I don't know what is considered "good" or "bad" in the machine learning world yet, but I'd say that's pretty impressive for the result it gives.
 
