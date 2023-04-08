@@ -1,33 +1,42 @@
 from ultralytics import YOLO
 import cv2
 import numpy as np
-import pyautogui
+import dxcam
+from ultralytics.yolo.utils.plotting import Annotator
 
 # load best.pt
 model = YOLO('./training/best.pt')
+model.to('cuda')
 
-# begin capturing screen
-cap = cv2.VideoCapture(0)
-
-# set the resolution
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+camera = dxcam.create()
+frame = camera.grab()  # full screen
 
 while True:
     # read the screen
-    ret, frame = cap.read()
-    
+    frame = camera.grab()  # full screen
+
     # predict the screen
-    results = model.predict(frame)
+    results = model.predict(frame, conf=0.25)
     
     # draw the bounding boxes
-    # print(results)
-    # for i in range(len(results.xyxy[0])):
-    #     cv2.rectangle(frame, (int(results.xyxy[0][i][0]), int(results.xyxy[0][i][1])), (int(results.xyxy[0][i][2]), int(results.xyxy[0][i][3])), (0, 255, 0), 2)
+    for result in results:
+      if hasattr(result.boxes, 'xyxy') and len(result.boxes.xyxy) <= 0:
+        continue
+
+      annotator = Annotator(frame)
+      boxes = result.boxes
+
+      for box in boxes:
+        b = box.xyxy[0]  # get box coordinates in (top, left, bottom, right) format
+        c = box.cls
+        annotator.box_label(b, model.names[int(c)])
     
-    # show the screen
-    screenshot = pyautogui.screenshot()
-    cv2.imshow('Screenshot', np.array(screenshot))
+    # Downscale to 1/4
+    if type(frame) is np.ndarray:
+      frame = cv2.resize(frame, (0, 0), fx=0.4, fy=0.4)
+
+      # show the screen
+      cv2.imshow('Screenshot', np.array(frame))
     
     # wait for a key press
     if cv2.waitKey(1) & 0xFF == ord('q'):
