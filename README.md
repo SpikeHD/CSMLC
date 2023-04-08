@@ -1,5 +1,12 @@
 <div align="center">
-  <h1>CSMLC</h1
+  <h1>CSMLC</h1>
+  
+  <div>
+    <img src="https://img.shields.io/github/size/SpikeHD/CSMLC/training/best.pt?label=model%20size" />
+    <img src="https://img.shields.io/github/commit-activity/m/SpikeHD/CSMLC" />
+    <img src="https://img.shields.io/github/last-commit/SpikeHD/CSMLC" />
+   </div>
+  
   <p>
     <b>C</b>ounter <b>S</b>trike <b>M</b>achine <b>L</b>earning <b>C</b>heats is a project I created to learn image recognition machine learning. Using a modified <a href="https://github.com/SpikeHD/cs2-data-dumper">CS2 ESP program</a> to dump bounding box data into YOLO format, I am able to efficiently gather training data after just a little bit of cleanup!
   </p>
