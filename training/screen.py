@@ -13,7 +13,10 @@ frame = camera.grab()  # full screen
 
 while True:
     # read the screen
-    frame = camera.grab()  # full screen
+    frame = camera.grab()
+
+    if type(frame) is np.ndarray:
+      frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     # predict the screen
     results = model.predict(frame, conf=0.25)

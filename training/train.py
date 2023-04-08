@@ -8,8 +8,8 @@ if __name__ == '__main__':
    # Use the model
    results = model.train(
       data='S:/CSMLC/training/custom.yaml',
-      imgsz=800,
-      epochs=20,
+      imgsz=928,
+      epochs=30,
       batch=8,
       name='yolov8n_custom'
    )
