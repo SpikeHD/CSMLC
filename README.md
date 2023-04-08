@@ -92,7 +92,7 @@ This project is built off the backbone of [YOLOv8](https://github.com/ultralytic
 
 To train the custom model, I gather data using a [CS2 ESP cheat](https://github.com/SpikeHD/cs2-data-dumper) that I modified (thank you to the original author of it!) to dump bounding box data directly to YOLO format. I then use my personal favorite labelling program, [OpenLabeling](https://github.com/Cartucho/OpenLabeling), to clean up the data (for example, getting rid of ESP boxes that are showing players through walls). A couple games of Deathmatch was enough to get it to it's current state.
 
-The YOLOv8 model is awesome. In fact, I'm sure you're curious about the training time on the above (example video)[#progress], since it's *SUPER* impressive:
+The YOLOv8 model is awesome. In fact, I'm sure you're curious about the training time on the above [example video](#progress), since it's *SUPER* impressive:
 
 ```
 +-------+
