@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img height="200px" src="https://user-images.githubusercontent.com/25207995/230746716-b1cb3e91-985e-4882-97ae-88bd6fa79382.png" />
+  <img height="150px" src="https://user-images.githubusercontent.com/25207995/230746716-b1cb3e91-985e-4882-97ae-88bd6fa79382.png" />
 
   <div>
     <img src="https://img.shields.io/github/size/SpikeHD/CSMLC/training/best.pt?label=model%20size" />
