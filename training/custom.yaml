@@ -1,11 +1,15 @@
 path: .
-train: ./train/images
-test: ./test/images
-val: ./valid/images
+train: S:/CSMLC/training/train/images
+test: S:/CSMLC/training/test/images
+val: S:/CSMLC/training/val/images
 
 #Classes
 nc: 3
+names:
+  0: t
+  1: ct
+  2: planted_bomb
 
 #classes names
 #replace all class names list with your classes names
-names: ['t', 'ct', 'bomb']
+names: ['t', 'ct', 'planted_bomb']

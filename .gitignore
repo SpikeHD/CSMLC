@@ -2,3 +2,13 @@
 Lib
 Scripts
 share
+
+yolov8n.pt
+runs
+
+venv
+
+training/all
+training/test
+training/train
+training/val
