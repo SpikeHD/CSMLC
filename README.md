@@ -3,6 +3,9 @@
   <p>
     <b>C</b>ounter <b>S</b>trike <b>M</b>achine <b>L</b>earning <b>C</b>heats is a project I created to learn image recognition machine learning. Using a modified <a href="https://github.com/SpikeHD/cs2-data-dumper">CS2 ESP program</a> to dump bounding box data into YOLO format, I am able to efficiently gather training data after just a little bit of cleanup!
   </p>
+  <p>Inspired by <a href="https://github.com/IgaoGuru/Sequoia">Sequoia</a> :)</p>
+  
+  <p><i>Disclaimer: This is created both as practice for myself and as an educational example of practical image-recognition and machine learning applications. It is not intended for use outside of private matches.</i></p>
 </div>
 
 # Table of contents
@@ -10,6 +13,7 @@
 - [Setup](#setup)
   - [For training](#for-training)
   - [For using](#for-using)
+- [Technical Details](#technical-details)
 
 # Progress
 
@@ -79,3 +83,33 @@ You can tweak anything training related in `custom.yaml` and `train.py`.
   python training/screen.py
   ```
   This will run the script that opens a new window, which displays what the computer sees and shows the bounding boxes of where players are (see the [example video](#progress) for how that looks).
+  
+# Technical Details
+
+This project is built off the backbone of [YOLOv8](https://github.com/ultralytics/ultralytics), a super-fast and surprisingly accurate model for machine learning applications. A lot of the projects you will see that do something similar to this one are using slightly older versions (Sequoia uses v5, for example), so this one is currently the most state-of-the-art!
+
+To train the custom model, I gather data using a [CS2 ESP cheat](https://github.com/SpikeHD/cs2-data-dumper) that I modified (thank you to the original author of it!) to dump bounding box data directly to YOLO format. I then use my personal favorite labelling program, [OpenLabeling](https://github.com/Cartucho/OpenLabeling), to clean up the data (for example, getting rid of ESP boxes that are showing players through walls). A couple games of Deathmatch was enough to get it to it's current state.
+
+The YOLOv8 model is awesome. In fact, I'm sure you're curious about the training time on the above (example video)[#progress], since it's *SUPER* impressive:
+
+```
++-------+
+| specs |
++-------+
+GPU: RTX 3070 8gb
+CPU: i7-9700k (not overclocked)
+RAM: 32GB
+
++------------------+
+| training metrics |
++------------------+
+Images: ~1.6k (about ~17gb of uncompressed BMPs)
+Epochs: 30
+Resolution: 928
+Batch: 8
+Approx. Time Taken to Train: 1h
+```
+(I will try to remember to time the next training session properly)
+
+An hour to train?? Only 1.5k images?? I don't know what is considered "good" or "bad" in the machine learning world yet, but I'd say that's pretty impressive.
+
