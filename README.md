@@ -22,6 +22,7 @@
   - [For training](#for-training)
   - [For using](#for-using)
 - [Technical Details](#technical-details)
+- [TODO](#todo)
 
 # Progress
 
@@ -93,7 +94,13 @@ You can tweak anything training related in `custom.yaml` and `train.py`.
   python training/screen.py
   ```
   This will run the script that opens a new window, which displays what the computer sees and shows the bounding boxes of where players are (see the [example video](#progress) for how that looks).
-  
+
+# TODO
+
+- Trigger bot (train on heads only, perhaps)
+- Aim snapping
+  - Natural-looking aim adjustment too?
+
 # Technical Details
 
 This project is built off the backbone of [YOLOv8](https://github.com/ultralytics/ultralytics), a super-fast and surprisingly accurate model for machine learning applications. A lot of the projects you will see that do something similar to this one are using slightly older versions (Sequoia uses v5, for example), so this one is currently the most state-of-the-art!
