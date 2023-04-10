@@ -4,7 +4,8 @@ import cv2
 import numpy as np
 import dxcam
 from ultralytics.yolo.utils.plotting import Annotator
-import win32api, win32con
+
+import trigger
 
 # load best.pt
 model = YOLO('./training/best.pt')
@@ -13,7 +14,7 @@ model.to('cuda')
 camera = dxcam.create()
 frame = camera.grab()  # full screen
 
-last_snap = time.time()
+last_tb = time.time()
 
 while True:
     # read the screen
@@ -23,7 +24,7 @@ while True:
       frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     # predict the screen
-    results = model.predict(frame, conf=0.25)
+    results = model.predict(frame, conf=0.25, verbose=False)
     closest_box = None
     
     # draw the bounding boxes
@@ -45,15 +46,11 @@ while True:
     if closest_box is not None:
       box_arr = np.array(closest_box.cpu(), dtype=np.int32)
 
-      if time.time() - last_snap > 1:
-        last_snap = time.time()
-        x = int(box_arr[1] + (box_arr[3] - box_arr[1]) / 2)
-        y = int(box_arr[0] + (box_arr[2] - box_arr[0]) / 2)
-
-        print("Moving to", x, y)
+      if time.time() - last_tb > 1:
         
-        # Move mouse to center of box
-        win32api.SetCursorPos((x, y))
+        # do triggerbot from trigger.py
+        if trigger.trigger_check(box_arr):
+          last_tb = time.time()
     
     # Downscale to 1/4
     if type(frame) is np.ndarray:
