@@ -33,7 +33,7 @@
 Here is an example video of the current model (as of April 7, 2023)! There are a couple mis-identifications, but overall I think it's really accurate.
 
 <div align="center">
-  <video src="https://user-images.githubusercontent.com/25207995/230737594-096aabe8-e91f-4739-9771-54b227ed62fc.mp4" />
+  <video src="https://user-images.githubusercontent.com/25207995/230843656-bda07c76-7ce6-4218-91d4-6b0d3286c1b5.mp4" />
 </div>
 
 ## Triggerbot
