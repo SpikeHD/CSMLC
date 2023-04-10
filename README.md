@@ -18,6 +18,8 @@
 
 # Table of contents
 - [Progress](#progress)
+  - [Detection](#detection)
+  - [Triggerbot](#triggerbot)
 - [Setup](#setup)
   - [For training](#for-training)
   - [For using](#for-using)
@@ -26,10 +28,24 @@
 
 # Progress
 
+## Detection
+
 Here is an example video of the current model (as of April 7, 2023)! There are a couple mis-identifications, but overall I think it's really accurate.
 
 <div align="center">
   <video src="https://user-images.githubusercontent.com/25207995/230737594-096aabe8-e91f-4739-9771-54b227ed62fc.mp4" />
+</div>
+
+## Triggerbot
+
+Two examples of the triggerbot implementation (for whole bodies, not just heads yet). At no point in either of these clips is there a single real mouse press:
+
+<div align="center">
+  <video src="https://user-images.githubusercontent.com/25207995/230823560-145fb46f-cb12-44d4-af5d-cdae10ca4cd4.mp4" />
+</div>
+
+<div align="center">
+  <video src="https://user-images.githubusercontent.com/25207995/230821681-fba39517-074a-4001-9605-039b4fdc1244.mp4" />
 </div>
 
 # Setup
