@@ -35,7 +35,7 @@ Here is an example video of the current model (as of April 7, 2023)! There are a
 Two examples of the triggerbot implementation (for whole bodies, not just heads yet). At no point in either of these clips is there a single real mouse press:
 
 <div align="center">
-  <video src="https://user-images.githubusercontent.com/25207995/230821648-9129b4dd-c177-4c42-b036-66bc3b4e19bf.mp4" />
+  <video src="https://user-images.githubusercontent.com/25207995/230823560-145fb46f-cb12-44d4-af5d-cdae10ca4cd4.mp4" />
 </div>
 
 <div align="center">
