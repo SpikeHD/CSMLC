@@ -22,6 +22,7 @@ while True:
 
     if type(frame) is np.ndarray:
       frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+      frame = cv2.resize(frame, (0, 0), fx=0.4, fy=0.4)
 
     # predict the screen
     results = model.predict(frame, conf=0.25, verbose=False)
@@ -43,6 +44,7 @@ while True:
         if closest_box is None or b[1] < closest_box[1]:
           closest_box = b
     
+    # If there is a close box, check to see if we can do stuff with it
     if closest_box is not None:
       box_arr = np.array(closest_box.cpu(), dtype=np.int32)
 
@@ -54,8 +56,6 @@ while True:
     
     # Downscale to 1/4
     if type(frame) is np.ndarray:
-      frame = cv2.resize(frame, (0, 0), fx=0.4, fy=0.4)
-
       # show the screen
       cv2.imshow('Screenshot', np.array(frame))
     
