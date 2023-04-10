@@ -8,7 +8,7 @@ from ultralytics.yolo.utils.plotting import Annotator
 import trigger
 
 # load best.pt
-model = YOLO('./training/best.pt')
+model = YOLO('training/best.pt')
 model.to('cuda')
 
 camera = dxcam.create()
@@ -22,7 +22,6 @@ while True:
 
     if type(frame) is np.ndarray:
       frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-      frame = cv2.resize(frame, (0, 0), fx=0.4, fy=0.4)
 
     # predict the screen
     results = model.predict(frame, conf=0.25, verbose=False)
@@ -32,17 +31,20 @@ while True:
     for result in results:
       if hasattr(result.boxes, 'xyxy') and len(result.boxes.xyxy) <= 0:
         continue
+      
+      try:
+        annotator = Annotator(np.ascontiguousarray(frame))
+        boxes = result.boxes
 
-      annotator = Annotator(frame)
-      boxes = result.boxes
+        for box in boxes:
+          b = box.xyxy[0]  # get box coordinates in (top, left, bottom, right) format
+          c = box.cls
+          annotator.box_label(b, model.names[int(c)])
 
-      for box in boxes:
-        b = box.xyxy[0]  # get box coordinates in (top, left, bottom, right) format
-        c = box.cls
-        annotator.box_label(b, model.names[int(c)])
-
-        if closest_box is None or b[1] < closest_box[1]:
-          closest_box = b
+          if closest_box is None or b[1] < closest_box[1]:
+            closest_box = b
+      except:
+        pass
     
     # If there is a close box, check to see if we can do stuff with it
     if closest_box is not None:
@@ -56,6 +58,7 @@ while True:
     
     # Downscale to 1/4
     if type(frame) is np.ndarray:
+      frame = cv2.resize(frame, (0, 0), fx=0.4, fy=0.4)
       # show the screen
       cv2.imshow('Screenshot', np.array(frame))
     
