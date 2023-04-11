@@ -4,8 +4,10 @@ import cv2
 import numpy as np
 import dxcam
 from ultralytics.yolo.utils.plotting import Annotator
+import threading
 
 import trigger
+import aim
 
 # load best.pt
 model = YOLO('training/best.pt')
@@ -15,6 +17,7 @@ camera = dxcam.create()
 frame = camera.grab()  # full screen
 
 last_tb = time.time()
+last_aim = time.time()
 
 while True:
     # read the screen
@@ -50,11 +53,16 @@ while True:
     if closest_box is not None:
       box_arr = np.array(closest_box.cpu(), dtype=np.int32)
 
-      if time.time() - last_tb > 1:
+      #if time.time() - last_tb > 1:
         
         # do triggerbot from trigger.py
-        if trigger.trigger_check(box_arr):
-          last_tb = time.time()
+        #if trigger.trigger_check(box_arr):
+        #  last_tb = time.time()
+
+      if time.time() - last_aim > 2:
+        # do aimbot from aim.py
+        if aim.aim_check(box_arr):
+          last_aim = time.time()
     
     # Downscale to 1/4
     if type(frame) is np.ndarray:
