@@ -6,7 +6,7 @@ max_sens = 8
 
 auto_fire_after_snap = False
 
-def aim_check(box_arr):
+def aim_check(box_arr, listener):
   # This is similar to trigger bot, but this time we drag the mouse to towards the closest box
 
   # Get the center of the box
@@ -32,11 +32,17 @@ def aim_check(box_arr):
   if abs(distance[0]) < 20 and abs(distance[1]) < 20:
     return False
 
+  # Supress mouse events so we don't mess up the aiming
+  listener.supress = True
+
   # Move the mouse towards the box
   pydirectinput.moveTo(int(distance[0] + mouse_pos[0]), int(distance[1] + mouse_pos[1]), duration=duration, disable_mouse_acceleration=False)
 
   if auto_fire_after_snap:
     pydirectinput.mouseDown(button='left')
     pydirectinput.mouseUp(button='left')
+  
+  # Unsupress mouse events
+  listener.supress = False
 
   return True

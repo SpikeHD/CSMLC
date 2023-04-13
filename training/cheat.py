@@ -19,12 +19,12 @@ frame = camera.grab()  # full screen
 last_tb = time.time()
 last_aim = time.time()
 
-right_clicking = False
+left_clicking = False
 
 def on_click(x, y, button, pressed):
-  global right_clicking
-  if button == mouse.Button.right:
-    right_clicking = pressed
+  global left_clicking
+  if button == mouse.Button.left:
+    left_clicking = pressed
 
 
 listener = mouse.Listener(on_click=on_click)
@@ -64,13 +64,13 @@ while True:
   if closest_box is not None:
     box_arr = np.array(closest_box.cpu(), dtype=np.int32)
 
-    if time.time() - last_tb > 0.1:
-      # do triggerbot from trigger.py
-      if trigger.trigger_check(box_arr):
-        last_tb = time.time()
+    # if time.time() - last_tb > 0.1:
+    #   # do triggerbot from trigger.py
+    #   if trigger.trigger_check(box_arr):
+    #     last_tb = time.time()
 
-    if time.time() - last_aim > 0.2 and right_clicking:
-      if aim.aim_check(box_arr):
+    if time.time() - last_aim > 0.2 and left_clicking:
+      if aim.aim_check(box_arr, listener):
         last_aim = time.time()
       
   # Downscale to 1/4
