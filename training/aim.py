@@ -4,7 +4,7 @@ import numpy as np
 mouse_sens = 2.11
 max_sens = 8
 
-auto_fire_after_snap = True
+auto_fire_after_snap = False
 
 def aim_check(box_arr):
   # This is similar to trigger bot, but this time we drag the mouse to towards the closest box
@@ -20,11 +20,6 @@ def aim_check(box_arr):
 
   # Duration will depend on how far it is
   duration = np.linalg.norm(distance) / 1000
-
-  print('Center: ', box_center)
-  print('Mouse: ', mouse_pos)
-  print('Distance: ', distance)
-  print('Duration: ', duration)
 
   # If too far, don't move the mouse
   if abs(distance[0]) > 80 and abs(distance[1]) > 80:
